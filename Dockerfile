@@ -1,12 +1,13 @@
 # Build the project
-FROM maven:3.9.6-amazoncorretto-21-debian
-COPY . .
-RUN mvn clean install -DskipTests
+FROM maven:3.9.6-eclipse-temurin-21-jammy AS build
+WORKDIR /app
+COPY . /app/
+RUN mvn clean install
 
 # define the base image
-FROM openjdk:21
+FROM openjdk:21-nanoserver
 # copy the jar file to the container
-COPY --from=build /target/NixaghDockerWeb-0.0.1-SNAPSHOT.jar NixaghDockerWeb.jar
+COPY --from=build /app/target/*.jar /app/NixaghDockerWeb.jar
 
 # expose the port
 EXPOSE 8080
