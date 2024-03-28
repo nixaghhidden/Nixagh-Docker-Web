@@ -7,7 +7,7 @@ RUN mvn clean install
 # define the base image
 FROM openjdk:21
 # copy the jar file to the container
-COPY --from=build /app/target/*.jar /app/NixaghDockerWeb.jar
+COPY --from=build /app/target/*.jar NixaghDockerWeb.jar
 
 # expose the port
 EXPOSE 8080
