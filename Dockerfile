@@ -1,5 +1,3 @@
-RUN mvn clean package -DskipTests
-
 # define the base image
 FROM openjdk:21
 LABEL maintainer="nixagh.com"
