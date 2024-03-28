@@ -5,7 +5,7 @@ COPY . /app/
 RUN mvn clean install
 
 # define the base image
-FROM openjdk:21-nanoserver
+FROM openjdk:21
 # copy the jar file to the container
 COPY --from=build /app/target/*.jar /app/NixaghDockerWeb.jar
 
